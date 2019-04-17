@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blockly Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="blockly/blockly_compressed.js"></script>
+    <script src="blockly/blocks_compressed.js"></script>
+    <script src="blockly/javascript_compressed.js"></script>
+    <script src="blockly/python_compressed.js"></script>
+    <script src="blockly/msg/js/en.js"></script>
+    <script src="js/prism.js"></script>
+    <script src="js/demo.js"></script>
+    <link rel="stylesheet" href="css/prism.css">
+</head>
+
+<body>
+    <xml id="toolbox" style="display: none">
+        <category name="Control" colour="210">
+            <block type="controls_if"></block>
+            <block type="controls_for"></block>
+            <block type="controls_repeat_ext"></block>
+        </category>
+        <category name="Logic" colour="120">
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+        </category>
+        <category name="Math" colour="20">
+            <block type="math_arithmetic"></block>
+            <block type="math_number"></block>
+            <block type="math_number_property"></block>
+        </category>
+        <category name="Text" colour="290">
+            <block type="text"></block>
+            <block type="text_join"></block>
+            <block type="text_print"></block>
+        </category>
+        <category name="Variables" custom="VARIABLE">
+            <block type="variables_set"></block>
+            <block type="variables_get"></block>
+        </category>
+    </xml>
+
+    <h1>Blockly Demo</h1>
+    <p>
+        This is a simple demo page allowing the testing of Blockly
+        <br>
+    </p>
+    <br>
+    <form onsubmit>
+        Name:
+        <input type="text" name="Name" id="name-box"><br>
+        Example Number:
+        <input type="text" name="ExNumber" id="num-box" style="width: 34px;"><br>
+        <input type="button" name="Submit" value="Submit" id="submitBtn" onclick="saveFunc()">
+    </form>
+    <br>
+    <div id="blocklyDiv" style="height: 480px; width: 50%; float: left;"></div>
+    <div id="codeDiv" style="height: 480px; width: 50%; float: left;">
+        <pre>
+<code class="language-python" id="pyOut"></code>
+        </pre>
+    </div>
+    <br>
+    <div id="btnDiv">
+        <button id="testBtn" onclick="testFunc()">Test</button>
+        <button id="clearBtn" onclick="clearFunc()">Clear</button>
+    </div>
+
+    <script>
+        var workspace = Blockly.inject('blocklyDiv', { toolbox: document.getElementById('toolbox') });
+    </script>
+    <script>
+        // You can also require other files to run in this process
+        require('./renderer.js')
+    </script>
+</body>
+
+</html>
